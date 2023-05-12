@@ -1,0 +1,16 @@
+.greetingContainer {
+	margin: 3em 0;
+}
+
+.greetingName {
+	font-size: 3em;
+	margin-bottom: 1em;
+}
+
+.greetingText {
+	font-size: 1.125em;
+}
+
+.greeting-highligh {
+	color: #ff0101;
+}

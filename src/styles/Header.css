@@ -1,0 +1,13 @@
+.header {
+	display: flex;
+	align-items: center;
+	background-color: black;
+	padding: 1em;
+	margin: auto;
+}
+
+.headerName {
+	font-size: 1.5em;
+	color: #e60000;
+	padding-left: 0.5em;
+}

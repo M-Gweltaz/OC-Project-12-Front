@@ -1,0 +1,33 @@
+.footerContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+	width: 7em;
+	background-color: black;
+}
+
+.activityList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.activityIcon {
+	margin: 0.5em 0;
+	cursor: pointer;
+}
+
+.footerText {
+	position: fixed;
+	font-size: 0.8em;
+	bottom: 7.5em;
+	color: white;
+	transform: rotate(-90deg);
+	white-space: nowrap;
+}

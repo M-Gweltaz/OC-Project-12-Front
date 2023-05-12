@@ -1,0 +1,15 @@
+.loginContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 20em;
+}
+
+.loginNavContainer {
+	margin-top: 2em;
+}
+
+.loginNav {
+	padding: 1em;
+}
