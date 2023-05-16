@@ -1,6 +1,7 @@
 import { JSX, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Greeting from './Greeting';
+import Error404 from '../Error404';
 import { fetchingData } from '../../services/api';
 import { User } from '../../models/User';
 import { UserActivity } from '../../models/UserActivity';
@@ -38,7 +39,7 @@ export default function Dashboard(): JSX.Element {
 
 	return (
 		<main className='dashboardContainer'>
-			<Greeting />
+			{userData ? <Greeting user={userData.user} /> : <Error404 />}
 		</main>
 	);
 }
