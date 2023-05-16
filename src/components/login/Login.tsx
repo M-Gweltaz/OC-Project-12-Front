@@ -8,7 +8,7 @@ export default function Login(): JSX.Element {
 	return (
 		<>
 			<div className='loginContainer'>
-				<h1>Fake Login</h1>
+				<h2 className='loginTitle'>Fake Login</h2>
 				<nav className='loginNavContainer'>
 					<Link to={mockedUser12Dashboard} className='loginNav'>
 						User 12 Dashboard

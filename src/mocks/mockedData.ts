@@ -1,4 +1,14 @@
-const USER_MAIN_DATA = [
+const USER_MAIN_DATA: {
+	id: number;
+	userInfos: { firstName: string; lastName: string; age: number };
+	todayScore: number;
+	keyData: {
+		calorieCount: number;
+		proteinCount: number;
+		carbohydrateCount: number;
+		lipidCount: number;
+	};
+}[] = [
 	{
 		id: 12,
 		userInfos: {
@@ -21,7 +31,7 @@ const USER_MAIN_DATA = [
 			lastName: 'Ratorez',
 			age: 34,
 		},
-		score: 0.3,
+		todayScore: 0.3,
 		keyData: {
 			calorieCount: 2500,
 			proteinCount: 90,
@@ -31,7 +41,10 @@ const USER_MAIN_DATA = [
 	},
 ];
 
-const USER_ACTIVITY = [
+const USER_ACTIVITY: {
+	userId: number;
+	sessions: { day: string; kilogram: number; calories: number }[];
+}[] = [
 	{
 		userId: 12,
 		sessions: [
@@ -114,7 +127,10 @@ const USER_ACTIVITY = [
 	},
 ];
 
-const USER_AVERAGE_SESSIONS = [
+const USER_AVERAGE_SESSIONS: {
+	userId: number;
+	sessions: { day: number; sessionLength: number }[];
+}[] = [
 	{
 		userId: 12,
 		sessions: [
@@ -183,7 +199,11 @@ const USER_AVERAGE_SESSIONS = [
 	},
 ];
 
-const USER_PERFORMANCE = [
+const USER_PERFORMANCE: {
+	userId: number;
+	kind: { 1: string; 2: string; 3: string; 4: string; 5: string; 6: string };
+	data: { value: number; kind: number }[];
+}[] = [
 	{
 		userId: 12,
 		kind: {

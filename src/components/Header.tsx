@@ -1,7 +1,7 @@
 import { JSX } from 'react';
 import logo from '../assets/logo.png';
 import '../styles/Header.css';
-import NavBar from './NavBar.tsx';
+import NavBar from './NavBar';
 
 export default function Header(): JSX.Element {
 	return (

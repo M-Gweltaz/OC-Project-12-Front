@@ -11,7 +11,6 @@ class User {
 		proteinCount: number;
 		lipidCount: number;
 	};
-
 	constructor(
 		id: number,
 		userInfo: { firstName: string; lastName: string; age: number },
