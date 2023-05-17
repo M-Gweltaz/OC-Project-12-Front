@@ -5,6 +5,7 @@ import '../../styles/login/Login.css';
 export default function Login(): JSX.Element {
 	const mockedUser12Dashboard = '/dashboard/12';
 	const mockedUser18Dashboard = '/dashboard/18';
+
 	return (
 		<>
 			<div className='loginContainer'>

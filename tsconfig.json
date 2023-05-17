@@ -20,7 +20,7 @@
 		"noFallthroughCasesInSwitch": true,
 
 		// compilation
-		// "outDir": "dist",
+		"outDir": "dist",
 		"rootDir": "src"
 	},
 	"include": ["src"],

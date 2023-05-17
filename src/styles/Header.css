@@ -1,9 +1,10 @@
 .header {
 	display: flex;
 	align-items: center;
-	background-color: black;
+	background-color: #020203;
 	padding: 1em;
 	margin: auto;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .headerName {

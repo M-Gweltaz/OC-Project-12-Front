@@ -1,6 +1,7 @@
 import { JSX, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Greeting from './Greeting';
+import DailyActivity from './DailyActivity';
 import Error404 from '../Error404';
 import { fetchingData } from '../../services/api';
 import { User } from '../../models/User';
@@ -10,12 +11,12 @@ import { UserPerformance } from '../../models/UserPerformance';
 import '../../styles/dashboard/Dashboard.css';
 
 export default function Dashboard(): JSX.Element {
-	const [userData, setUserData] = useState<{
-		user: User;
-		activity: UserActivity;
-		averageSessions: UserAverageSessions;
-		performance: UserPerformance;
-	}>();
+	const [userData, setUserData] = useState<User>();
+	const [userActivityData, setUserActivityData] = useState<UserActivity>();
+	const [userAverageSessionsData, setAverageSessionsData] =
+		useState<UserAverageSessions>();
+	const [userPerformanceData, setUserPerformanceData] =
+		useState<UserPerformance>();
 
 	type userIdParams = {
 		id: string;
@@ -23,11 +24,19 @@ export default function Dashboard(): JSX.Element {
 	const { id } = useParams<userIdParams>();
 
 	useEffect(() => {
-		const fetchData = async () => {
+		const fetchData = async (): Promise<void> => {
 			try {
 				if (id !== undefined) {
-					const data = await fetchingData(id);
-					setUserData(data);
+					const data: {
+						user: User;
+						activity: UserActivity;
+						averageSessions: UserAverageSessions;
+						performance: UserPerformance;
+					} = await fetchingData(id);
+					setUserData(data.user);
+					setUserActivityData(data.activity);
+					setAverageSessionsData(data.averageSessions);
+					setUserPerformanceData(data.performance);
 				}
 			} catch (error) {
 				// Handle the error
@@ -38,8 +47,20 @@ export default function Dashboard(): JSX.Element {
 	}, [id]);
 
 	return (
-		<main className='dashboardContainer'>
-			{userData ? <Greeting user={userData.user} /> : <Error404 />}
-		</main>
+		<>
+			{userData &&
+			userActivityData &&
+			userAverageSessionsData &&
+			userPerformanceData ? (
+				<>
+					<Greeting user={userData} />
+					<main className='dashboardContainer'>
+						<DailyActivity activity={userActivityData} />
+					</main>
+				</>
+			) : (
+				<Error404 />
+			)}
+		</>
 	);
 }

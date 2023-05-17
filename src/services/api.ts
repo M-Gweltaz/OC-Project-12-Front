@@ -46,7 +46,7 @@ const fetchingData = (
 		activityData: activityDataInterface;
 		averageSessionsData: averageSessionsDataInterface;
 		performanceData: performanceDataInterface;
-	};
+	} = fetchingMockedData(userId);
 
 	import.meta.env.VITE_USE_API == 'true'
 		? (result = fetchingApi(userId))

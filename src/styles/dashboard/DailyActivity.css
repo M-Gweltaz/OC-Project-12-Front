@@ -1,0 +1,23 @@
+.activityChartContainer {
+	display: inline-block;
+	position: relative;
+	grid-column-start: 1;
+	grid-column-end: 4;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+.recharts-wrapper {
+	background-color: #fbfbfb;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+	border-radius: 0.313em;
+}
+
+.activityChartTitle {
+	font-size: 0.938em;
+	position: absolute;
+	top: 1.5em;
+	left: 1.5em;
+	font-weight: bold;
+	z-index: 1;
+}
