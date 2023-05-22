@@ -139,11 +139,33 @@ const parsingActivityData = (
 const parsingAverageSessionsData = (
 	averageSessionsData: averageSessionsDataInterface
 ): UserAverageSessions => {
+	const sessions: {
+		day: string;
+		sessionLength: number;
+	}[] = [];
+
+	const dayOfTheWeek: {
+		1: string;
+		2: string;
+		3: string;
+		4: string;
+		5: string;
+		6: string;
+		7: string;
+	} = { 1: 'L', 2: 'M', 3: 'M', 4: 'J', 5: 'V', 6: 'S', 7: 'D' };
+
+	averageSessionsData.sessions.forEach((session) => {
+		const data: {
+			day: string;
+			sessionLength: number;
+		} = { day: '', sessionLength: 0 };
+		data.day = dayOfTheWeek[session.day as keyof typeof dayOfTheWeek];
+		data.sessionLength = session.sessionLength;
+		sessions.push(data);
+	});
+
 	const parsedAverageSessionsData: UserAverageSessions =
-		new UserAverageSessions(
-			averageSessionsData.userId,
-			averageSessionsData.sessions
-		);
+		new UserAverageSessions(averageSessionsData.userId, sessions);
 
 	return parsedAverageSessionsData;
 };

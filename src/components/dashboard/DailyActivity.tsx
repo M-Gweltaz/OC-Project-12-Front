@@ -49,7 +49,7 @@ export default function DailyActivity({ activity }: Props): JSX.Element {
 	return (
 		<article className='activityChartContainer'>
 			<h2 className='activityChartTitle'>Activité quotidienne</h2>
-			<ResponsiveContainer minWidth={500} height='80%' minHeight={240}>
+			<ResponsiveContainer minWidth={500} height='70%' minHeight={220}>
 				<BarChart
 					data={data}
 					margin={{ top: 20, right: 15, bottom: 15, left: 15 }}
@@ -71,7 +71,7 @@ export default function DailyActivity({ activity }: Props): JSX.Element {
 						tickCount={3}
 						ticks={yTickValues}
 						axisLine={false}
-						tickLine={{ stroke: 'none' }} // Set tickLine prop to stroke: "none"
+						tickLine={{ stroke: 'none' }}
 						scale='linear'
 						tickMargin={20}
 					/>

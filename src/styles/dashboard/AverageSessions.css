@@ -1,0 +1,26 @@
+.averageSessionsChartContainer .recharts-wrapper {
+	background-color: #ff0000;
+}
+
+.averageSessionsChartContainer {
+	display: inline-block;
+	position: relative;
+	grid-column-start: 1;
+	grid-column-end: 2;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin: auto;
+	border-radius: 0.313em;
+}
+
+.averageSessionsChartTitle {
+	color: #ffffff;
+	font-size: 0.938em;
+	font-weight: bold;
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	z-index: 1;
+	mix-blend-mode: normal;
+	opacity: 0.5;
+}

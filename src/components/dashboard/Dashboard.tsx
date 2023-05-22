@@ -2,6 +2,7 @@ import { JSX, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Greeting from './Greeting';
 import DailyActivity from './DailyActivity';
+import AverageSessions from './AverageSessions';
 import Error404 from '../Error404';
 import { fetchingData } from '../../services/api';
 import { User } from '../../models/User';
@@ -56,6 +57,7 @@ export default function Dashboard(): JSX.Element {
 					<Greeting user={userData} />
 					<main className='dashboardContainer'>
 						<DailyActivity activity={userActivityData} />
+						<AverageSessions sessions={userAverageSessionsData} />
 					</main>
 				</>
 			) : (

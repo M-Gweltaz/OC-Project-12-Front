@@ -1,5 +1,7 @@
+import AverageSessions from '../components/dashboard/AverageSessions';
+
 interface AverageSessions {
-	day: number;
+	day: string;
 	sessionLength: number;
 }
 
