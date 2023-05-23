@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 .averageSessionsChartContainer .recharts-wrapper {
 	background-color: #ff0000;
 }
 
+=======
+>>>>>>> d4193c528c9af71cf5b18aa17d6378b3c1f2157d
 .averageSessionsChartContainer {
 	display: inline-block;
 	position: relative;
@@ -10,6 +13,7 @@
 	grid-row-start: 3;
 	grid-row-end: 5;
 	margin: auto;
+<<<<<<< HEAD
 	border-radius: 0.313em;
 }
 
@@ -17,10 +21,18 @@
 	color: #ffffff;
 	font-size: 0.938em;
 	font-weight: bold;
+=======
+}
+
+.averageSessionsChartTitle {
+	/* color: #ffffff; */
+	font-size: 0.938em;
+>>>>>>> d4193c528c9af71cf5b18aa17d6378b3c1f2157d
 	position: absolute;
 	top: 1em;
 	left: 1em;
 	z-index: 1;
+<<<<<<< HEAD
 	mix-blend-mode: normal;
 	opacity: 0.5;
 }
@@ -38,4 +50,6 @@
 	z-index: 1;
 	mix-blend-mode: normal;
 	opacity: 0.5;
+=======
+>>>>>>> d4193c528c9af71cf5b18aa17d6378b3c1f2157d
 }

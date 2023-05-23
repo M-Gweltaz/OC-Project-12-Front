@@ -1,8 +1,14 @@
 .dashboardContainer {
 	margin: 0 3em 0 10em;
 	display: grid;
+<<<<<<< HEAD
 	grid-template-columns: repeat(4, 1fr);
 	grid-template-rows: repeat(4, 1fr);
 	min-height: 400px;
 	gap: 1em;
+=======
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
+	min-height: 400px;
+>>>>>>> d4193c528c9af71cf5b18aa17d6378b3c1f2157d
 }

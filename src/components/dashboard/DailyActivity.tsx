@@ -49,7 +49,7 @@ export default function DailyActivity({ activity }: Props): JSX.Element {
 	return (
 		<article className='activityChartContainer'>
 			<h2 className='activityChartTitle'>Activité quotidienne</h2>
-			<ResponsiveContainer minWidth={500} height='70%' minHeight={240}>
+			<ResponsiveContainer minWidth={500} height='70%' minHeight={200}>
 				<BarChart
 					data={data}
 					margin={{ top: 20, right: 15, bottom: 15, left: 15 }}
