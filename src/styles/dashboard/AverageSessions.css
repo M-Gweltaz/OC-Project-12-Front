@@ -24,3 +24,18 @@
 	mix-blend-mode: normal;
 	opacity: 0.5;
 }
+
+.averageSessionsChartXAxisTick {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	color: #ffffff;
+	font-size: 0.938em;
+	font-weight: bold;
+	position: absolute;
+	bottom: 0.5em;
+	left: 0em;
+	z-index: 1;
+	mix-blend-mode: normal;
+	opacity: 0.5;
+}

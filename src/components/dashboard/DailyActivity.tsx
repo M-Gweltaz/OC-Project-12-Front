@@ -49,14 +49,20 @@ export default function DailyActivity({ activity }: Props): JSX.Element {
 	return (
 		<article className='activityChartContainer'>
 			<h2 className='activityChartTitle'>Activité quotidienne</h2>
-			<ResponsiveContainer minWidth={500} height='70%' minHeight={220}>
+			<ResponsiveContainer minWidth={500} height='70%' minHeight={240}>
 				<BarChart
 					data={data}
 					margin={{ top: 20, right: 15, bottom: 15, left: 15 }}
 					barGap={10}
 					barSize={7}
 				>
-					<CartesianGrid strokeDasharray='3 3' vertical={false} />
+					<CartesianGrid
+						strokeDasharray='3 3'
+						horizontalCoordinatesGenerator={(props) =>
+							props.height > 250 ? [75, 150, 225] : [100, 200]
+						}
+						vertical={false}
+					/>
 					<XAxis
 						dataKey='day'
 						tickSize={0}
