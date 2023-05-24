@@ -58,9 +58,9 @@ export default function DailyActivity({ activity }: Props): JSX.Element {
 				>
 					<CartesianGrid
 						strokeDasharray='3 3'
-						horizontalCoordinatesGenerator={(props) =>
-							props.height > 250 ? [75, 150, 225] : [100, 200]
-						}
+						// horizontalCoordinatesGenerator={(props) =>
+						// 	props.height > 250 ? [75, 150, 225] : [100, 200]
+						// }
 						vertical={false}
 					/>
 					<XAxis

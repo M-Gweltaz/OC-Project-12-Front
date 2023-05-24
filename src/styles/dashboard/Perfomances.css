@@ -1,0 +1,22 @@
+.performancesChartContainer .recharts-wrapper {
+	background-color: #282d30;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+}
+
+.performancesChartContainer {
+	display: inline-block;
+	position: relative;
+	grid-column-start: 2;
+	grid-column-end: 3;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin: auto;
+	border-radius: 5px;
+}
+
+.recharts-polar-grid-angle {
+	display: none;
+}
+.radiusAxis {
+	display: none;
+}

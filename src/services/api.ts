@@ -178,6 +178,16 @@ const parsingPerformanceData = (
 		value: number;
 	}[] = [];
 
+	// Define the desired order of sports
+	const desiredSportsOrder: string[] = [
+		'intensity',
+		'speed',
+		'strength',
+		'endurance',
+		'energy',
+		'cardio',
+	];
+
 	// switching the data object to only one array for sport and value
 	Object.entries(performanceData.kind).forEach(
 		([key, sport]: [string, string]) => {
@@ -190,9 +200,16 @@ const parsingPerformanceData = (
 		}
 	);
 
+	// Sort the performances array based on the desired sports order
+	const sortedPerformances = performances.sort((a, b) => {
+		const indexA = desiredSportsOrder.indexOf(a.sport);
+		const indexB = desiredSportsOrder.indexOf(b.sport);
+		return indexA - indexB;
+	});
+
 	const parsedPerformanceData: UserPerformance = new UserPerformance(
 		performanceData.userId,
-		performances
+		sortedPerformances
 	);
 
 	return parsedPerformanceData;

@@ -22,12 +22,12 @@ export default function AverageSessions({ sessions }: Props): JSX.Element {
 					Durée moyenne des sessions
 				</h2>
 				<ResponsiveContainer
-					minWidth={240}
+					minWidth={200}
 					height='70%'
-					minHeight={240}
+					minHeight={200}
 					width='70%'
 				>
-					<LineChart width={220} height={220} data={sessions.sessions}>
+					<LineChart data={sessions.sessions}>
 						<XAxis
 							dataKey='day'
 							hide={true}
@@ -38,7 +38,7 @@ export default function AverageSessions({ sessions }: Props): JSX.Element {
 							dataKey='sessionLength'
 							unit='min'
 							hide={true}
-							domain={['dataMin - 10', 'dataMax + 10']}
+							domain={['dataMin - 15', 'dataMax + 15']}
 						/>
 						<Tooltip
 							labelFormatter={() => ''}
