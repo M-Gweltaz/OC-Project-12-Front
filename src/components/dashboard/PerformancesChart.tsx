@@ -8,13 +8,13 @@ import {
 	PolarRadiusAxis,
 	Radar,
 } from 'recharts';
-import '../../styles/dashboard/Perfomances.css';
+import '../../styles/dashboard/PerfomancesChart.css';
 
 interface Props {
 	performance: UserPerformance;
 }
 
-export default function Performances({ performance }: Props): JSX.Element {
+export default function PerformancesChart({ performance }: Props): JSX.Element {
 	const getMaxValue = (): number => {
 		let maxValue = 0;
 		performance.performances.forEach((data) => {

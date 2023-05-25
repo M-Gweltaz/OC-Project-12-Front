@@ -9,13 +9,19 @@ class User {
 	keyData: {
 		calorieCount: number;
 		proteinCount: number;
+		carbohydrateCount: number;
 		lipidCount: number;
 	};
 	constructor(
 		id: number,
 		userInfo: { firstName: string; lastName: string; age: number },
 		todayScore: number,
-		keyData: { calorieCount: number; proteinCount: number; lipidCount: number }
+		keyData: {
+			calorieCount: number;
+			proteinCount: number;
+			carbohydrateCount: number;
+			lipidCount: number;
+		}
 	) {
 		this.id = id;
 		this.userInfo = userInfo;
@@ -27,13 +33,14 @@ class User {
 		return this.userInfo.firstName;
 	}
 
-	getUserInfo(): { firstName: string; lastName: string; age: number } {
-		return this.userInfo;
+	getTodayScore(): { todayScore: number }[] {
+		return [{ todayScore: this.todayScore }];
 	}
 
 	getKeyData(): {
 		calorieCount: number;
 		proteinCount: number;
+		carbohydrateCount: number;
 		lipidCount: number;
 	} {
 		return this.keyData;

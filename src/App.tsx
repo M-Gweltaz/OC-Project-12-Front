@@ -4,7 +4,7 @@ import Header from './components/Header';
 import Dashboard from './components/dashboard/Dashboard';
 import Login from './components/login/Login';
 import Footer from './components/Footer';
-import Error404 from './components/Error404';
+import Error404 from './components/error/Error404';
 
 export default function App(): JSX.Element {
 	return (

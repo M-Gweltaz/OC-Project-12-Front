@@ -1,10 +1,12 @@
 import { JSX, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Greeting from './Greeting';
-import DailyActivity from './DailyActivity';
-import AverageSessions from './AverageSessions';
-import Performances from './Performances';
-import Error404 from '../Error404';
+import DailyActivityChart from './DailyActivityChart';
+import AverageSessionsChart from './AverageSessionsChart';
+import PerformancesChart from './PerformancesChart';
+import DailyGoalChart from './DailyGoalChart';
+import FoodIntakeCards from './FoodIntakeCards';
+import Error404 from '../error/Error404';
 import { fetchingData } from '../../services/api';
 import { User } from '../../models/User';
 import { UserActivity } from '../../models/UserActivity';
@@ -25,6 +27,7 @@ export default function Dashboard(): JSX.Element {
 	};
 	const { id } = useParams<userIdParams>();
 
+	// USE MEMO OU CALLBACK
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
 			try {
@@ -55,11 +58,13 @@ export default function Dashboard(): JSX.Element {
 			userAverageSessionsData &&
 			userPerformanceData ? (
 				<>
-					<Greeting user={userData} />
+					<Greeting user={userData.getFirstName()} />
 					<main className='dashboardContainer'>
-						<DailyActivity activity={userActivityData} />
-						<AverageSessions sessions={userAverageSessionsData} />
-						<Performances performance={userPerformanceData} />
+						<DailyActivityChart activity={userActivityData} />
+						<AverageSessionsChart sessions={userAverageSessionsData} />
+						<PerformancesChart performance={userPerformanceData} />
+						<DailyGoalChart dailyGoal={userData.getTodayScore()} />
+						<FoodIntakeCards foodIntake={userData.getKeyData()} />
 					</main>
 				</>
 			) : (

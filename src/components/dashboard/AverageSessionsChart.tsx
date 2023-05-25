@@ -8,13 +8,13 @@ import {
 	Tooltip,
 	Line,
 } from 'recharts';
-import '../../styles/dashboard/AverageSessions.css';
+import '../../styles/dashboard/AverageSessionsChart.css';
 
 interface Props {
 	sessions: UserAverageSessions;
 }
 
-export default function AverageSessions({ sessions }: Props): JSX.Element {
+export default function AverageSessionsChart({ sessions }: Props): JSX.Element {
 	return (
 		<>
 			<article className='averageSessionsChartContainer'>

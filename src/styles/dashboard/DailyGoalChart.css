@@ -1,0 +1,20 @@
+.dailyGoalChartContainer {
+	position: absolute;
+	display: inline-block;
+	position: relative;
+	grid-column-start: 3;
+	grid-column-end: 4;
+	grid-row-start: 3;
+	grid-row-end: 5;
+	margin: auto;
+	border-radius: 5px;
+}
+
+.dailyGoalChartTitle {
+	font-size: 0.938em;
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	font-weight: bold;
+	z-index: 1;
+}

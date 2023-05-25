@@ -1,0 +1,31 @@
+.foodIntakeDetailedCard {
+	display: flex;
+	min-width: 12.5em;
+	min-height: 5.625em;
+	background: #fbfbfb;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+	border-radius: 5px;
+}
+
+.foodIntakeDetailedIcon {
+	max-width: 3.75em;
+	max-height: 3.75em;
+	margin: 1em 0.75em 1em 1em;
+}
+
+.foodIntakeDetailedDescription {
+	margin: auto;
+}
+
+.foodIntakeDetailedTitle {
+	color: #282d30;
+	font-weight: bold;
+	font-size: 1.25em;
+	line-height: 1.5em;
+}
+
+.fontIntakeDetailedText {
+	color: #74798c;
+	font-size: 0.875em;
+	line-height: 1.5em;
+}

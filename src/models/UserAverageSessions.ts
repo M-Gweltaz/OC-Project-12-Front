@@ -1,4 +1,4 @@
-import AverageSessions from '../components/dashboard/AverageSessions';
+import AverageSessions from '../components/dashboard/AverageSessionsChart';
 
 interface AverageSessions {
 	day: string;
