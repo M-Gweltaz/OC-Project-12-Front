@@ -21,3 +21,23 @@
 	font-weight: bold;
 	z-index: 1;
 }
+
+.recharts-cartesian-grid-horizontal :first-child {
+	display: none;
+}
+
+.recharts-cartesian-grid-horizontal :nth-last-child(2) {
+	display: none;
+}
+
+.recharts-cartesian-grid-horizontal :nth-last-child(4) {
+	transform: translateY(5px);
+}
+
+.recharts-cartesian-axis-ticks :first-child {
+	transform: translateY(10px);
+}
+
+.recharts-cartesian-axis-ticks :nth-last-child(2) {
+	transform: translateY(5px);
+}

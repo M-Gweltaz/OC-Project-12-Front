@@ -52,7 +52,9 @@ export default function AverageSessionsChart({ sessions }: Props): JSX.Element {
 								fontSize: '0.438em',
 								lineHeight: '1.5em',
 							}}
-						/>
+						>
+							<div id='chartTooltipContent' />
+						</Tooltip>
 						<Line
 							type='monotone'
 							dataKey='sessionLength'
