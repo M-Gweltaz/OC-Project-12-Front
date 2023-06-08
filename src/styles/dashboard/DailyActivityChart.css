@@ -41,3 +41,8 @@
 .recharts-cartesian-axis-ticks :nth-last-child(2) {
 	transform: translateY(5px);
 }
+
+.activityChartContainer {
+	height: 100%;
+	width: 100%;
+}

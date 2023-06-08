@@ -8,6 +8,7 @@ import {
 	Tooltip,
 	Line,
 } from 'recharts';
+
 import '../../styles/dashboard/AverageSessionsChart.css';
 
 interface Props {
@@ -28,6 +29,18 @@ export default function AverageSessionsChart({ sessions }: Props): JSX.Element {
 					width='70%'
 				>
 					<LineChart data={sessions.sessions}>
+						<defs>
+							<linearGradient
+								id='linearGradient'
+								x1='100%'
+								y1='0'
+								x2='0'
+								y2='0'
+							>
+								<stop offset='0%' stopColor='#FFFFFF' stopOpacity={1} />
+								<stop offset='100%' stopColor='#FFFFFF' stopOpacity={0.4} />
+							</linearGradient>
+						</defs>
 						<XAxis
 							dataKey='day'
 							hide={true}
@@ -52,15 +65,14 @@ export default function AverageSessionsChart({ sessions }: Props): JSX.Element {
 								fontSize: '0.438em',
 								lineHeight: '1.5em',
 							}}
-						>
-							<div id='chartTooltipContent' />
-						</Tooltip>
+						/>
+
 						<Line
 							type='monotone'
 							dataKey='sessionLength'
-							stroke='#fff'
 							strokeWidth={2}
 							dot={false}
+							stroke='url(#linearGradient)'
 						/>
 					</LineChart>
 				</ResponsiveContainer>

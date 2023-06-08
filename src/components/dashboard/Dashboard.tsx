@@ -27,7 +27,6 @@ export default function Dashboard(): JSX.Element {
 	};
 	const { id } = useParams<userIdParams>();
 
-	// USE MEMO OU CALLBACK
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
 			try {
@@ -44,7 +43,7 @@ export default function Dashboard(): JSX.Element {
 					setUserPerformanceData(data.performance);
 				}
 			} catch (error) {
-				// Handle the error
+				console.log(error);
 			}
 		};
 

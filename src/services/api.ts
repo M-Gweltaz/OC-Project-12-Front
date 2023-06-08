@@ -31,46 +31,122 @@ interface performanceDataInterface {
 	data: { value: number; kind: number }[];
 }
 
-const fetchingData = (
-	id: string
-): {
-	user: User;
-	activity: UserActivity;
-	averageSessions: UserAverageSessions;
-	performance: UserPerformance;
-} => {
-	const userId: number = parseInt(id);
-
-	let result: {
-		mainData: mainDataInterface;
-		activityData: activityDataInterface;
-		averageSessionsData: averageSessionsDataInterface;
-		performanceData: performanceDataInterface;
-	} = fetchingMockedData(userId);
-
-	import.meta.env.VITE_USE_API == 'true'
-		? (result = fetchingApi(userId))
-		: (result = fetchingMockedData(userId));
-
-	return parsingData(result);
-};
-
-const fetchingApi = (userId: number) => {
-	// fetching logic
-	console.log(userId);
-};
-
-const fetchingMockedData = (
-	userId: number
-): {
+interface resultInterface {
 	mainData: mainDataInterface;
 	activityData: activityDataInterface;
 	averageSessionsData: averageSessionsDataInterface;
 	performanceData: performanceDataInterface;
-} => {
+}
+
+const fetchingData = async (
+	id: string
+): Promise<{
+	user: User;
+	activity: UserActivity;
+	averageSessions: UserAverageSessions;
+	performance: UserPerformance;
+}> => {
+	const userId: number = parseInt(id);
+
+	let result: resultInterface;
+
+	import.meta.env.VITE_USE_API == 'true'
+		? (result = await fetchingApi(userId))
+		: (result = await fetchingMockedData(userId));
+
+	return parsingData(result);
+};
+
+const fetchingApi = async (userId: number): Promise<resultInterface> => {
+	const apiUrl = 'http://localhost:3000/user';
+
+	const mainData: mainDataInterface = await fetchApiMainData(apiUrl, userId);
+	const activityData: activityDataInterface = await fetchApiActivityData(
+		apiUrl,
+		userId
+	);
+	const averageSessionsData: averageSessionsDataInterface =
+		await fetchApiAverageSessionsData(apiUrl, userId);
+	const performanceData: performanceDataInterface =
+		await fetchApiPerformanceData(apiUrl, userId);
+
+	const resultData: resultInterface = {
+		mainData,
+		activityData,
+		averageSessionsData,
+		performanceData,
+	};
+
+	return resultData;
+};
+
+const fetchApiMainData = async (
+	apiUrl: string,
+	userId: number
+): Promise<mainDataInterface> => {
+	try {
+		const response = await fetch(`${apiUrl}/${userId}`);
+		const mainDataResponse = await response.json();
+		if (mainDataResponse.data.score) {
+			const mainDataResponseCurated = mainDataResponse;
+			mainDataResponseCurated.data.todayScore = mainDataResponse.data.score;
+			delete mainDataResponseCurated.data.score;
+			return mainDataResponseCurated.data;
+		}
+		return mainDataResponse.data;
+	} catch (error) {
+		console.log(`This is an API error: ${error}`);
+		throw error;
+	}
+};
+
+const fetchApiActivityData = async (
+	apiUrl: string,
+	userId: number
+): Promise<activityDataInterface> => {
+	try {
+		const response = await fetch(`${apiUrl}/${userId}/activity`);
+		const activityDataResponse = await response.json();
+		return activityDataResponse.data;
+	} catch (error) {
+		console.log(`This is an API error: ${error}`);
+		throw error;
+	}
+};
+
+const fetchApiAverageSessionsData = async (
+	apiUrl: string,
+	userId: number
+): Promise<averageSessionsDataInterface> => {
+	try {
+		const response = await fetch(`${apiUrl}/${userId}/average-sessions`);
+		const averageSessionDataResponse = await response.json();
+		return averageSessionDataResponse.data;
+	} catch (error) {
+		console.log(`This is an API error: ${error}`);
+		throw error;
+	}
+};
+
+const fetchApiPerformanceData = async (
+	apiUrl: string,
+	userId: number
+): Promise<performanceDataInterface> => {
+	try {
+		const response = await fetch(`${apiUrl}/${userId}/performance`);
+		const performanceDataResponse = await response.json();
+		return performanceDataResponse.data;
+	} catch (error) {
+		console.log(`This is an API error: ${error}`);
+		throw error;
+	}
+};
+
+const fetchingMockedData = (userId: number): resultInterface => {
 	const mainData = mockedData.USER_MAIN_DATA.find(
 		(user) => user.id === userId
 	) as mainDataInterface;
+
 	const activityData = mockedData.USER_ACTIVITY.find(
 		(user) => user.userId === userId
 	) as activityDataInterface;
@@ -80,12 +156,7 @@ const fetchingMockedData = (
 	const performanceData = mockedData.USER_PERFORMANCE.find(
 		(user) => user.userId === userId
 	) as performanceDataInterface;
-	const resultData: {
-		mainData: mainDataInterface;
-		activityData: activityDataInterface;
-		averageSessionsData: averageSessionsDataInterface;
-		performanceData: performanceDataInterface;
-	} = {
+	const resultData: resultInterface = {
 		mainData,
 		activityData,
 		averageSessionsData,
@@ -95,12 +166,9 @@ const fetchingMockedData = (
 };
 
 // passing data through models
-const parsingData = (result: {
-	mainData: mainDataInterface;
-	activityData: activityDataInterface;
-	averageSessionsData: averageSessionsDataInterface;
-	performanceData: performanceDataInterface;
-}): {
+const parsingData = (
+	result: resultInterface
+): {
 	user: User;
 	activity: UserActivity;
 	averageSessions: UserAverageSessions;

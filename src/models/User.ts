@@ -33,8 +33,8 @@ class User {
 		return this.userInfo.firstName;
 	}
 
-	getTodayScore(): { todayScore: number }[] {
-		return [{ todayScore: this.todayScore }];
+	getTodayScore(): { name: string; value: number }[] {
+		return [{ name: 'todayScore', value: this.todayScore }];
 	}
 
 	getKeyData(): {
