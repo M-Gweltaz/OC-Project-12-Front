@@ -7,6 +7,7 @@ import PerformancesChart from './PerformancesChart';
 import DailyGoalChart from './DailyGoalChart';
 import FoodIntakeCards from './FoodIntakeCards';
 import Error404 from '../error/Error404';
+import Error500 from '../error/Error500';
 import { fetchingData } from '../../services/api';
 import { User } from '../../models/User';
 import { UserActivity } from '../../models/UserActivity';
@@ -21,6 +22,7 @@ export default function Dashboard(): JSX.Element {
 		useState<UserAverageSessions>();
 	const [userPerformanceData, setUserPerformanceData] =
 		useState<UserPerformance>();
+	const [apiError, setApiError] = useState<boolean>(false);
 
 	type userIdParams = {
 		id: string;
@@ -29,21 +31,27 @@ export default function Dashboard(): JSX.Element {
 
 	useEffect(() => {
 		const fetchData = async (): Promise<void> => {
-			try {
-				if (id !== undefined) {
+			if (id !== undefined) {
+				try {
 					const data: {
 						user: User;
 						activity: UserActivity;
 						averageSessions: UserAverageSessions;
 						performance: UserPerformance;
 					} = await fetchingData(id);
+
 					setUserData(data.user);
 					setUserActivityData(data.activity);
 					setAverageSessionsData(data.averageSessions);
 					setUserPerformanceData(data.performance);
+				} catch (error) {
+					console.error(error);
+					setApiError(true);
+					setUserData(undefined);
+					setUserActivityData(undefined);
+					setAverageSessionsData(undefined);
+					setUserPerformanceData(undefined);
 				}
-			} catch (error) {
-				console.log(error);
 			}
 		};
 
@@ -55,7 +63,9 @@ export default function Dashboard(): JSX.Element {
 			{userData &&
 			userActivityData &&
 			userAverageSessionsData &&
-			userPerformanceData ? (
+			userPerformanceData &&
+			userData.id !== 0 &&
+			!apiError ? (
 				<>
 					<Greeting user={userData.getFirstName()} />
 					<main className='dashboardContainer'>
@@ -67,7 +77,7 @@ export default function Dashboard(): JSX.Element {
 					</main>
 				</>
 			) : (
-				<Error404 />
+				<Error500 />
 			)}
 		</>
 	);

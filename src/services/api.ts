@@ -69,7 +69,6 @@ const fetchingApi = async (userId: number): Promise<resultInterface> => {
 		await fetchApiAverageSessionsData(apiUrl, userId);
 	const performanceData: performanceDataInterface =
 		await fetchApiPerformanceData(apiUrl, userId);
-
 	const resultData: resultInterface = {
 		mainData,
 		activityData,
@@ -95,11 +94,20 @@ const fetchApiMainData = async (
 		}
 		return mainDataResponse.data;
 	} catch (error) {
-		console.log(`This is an API error: ${error}`);
-		throw error;
+		console.error(error);
+		return {
+			id: 0,
+			userInfos: { firstName: '', lastName: '', age: 0 },
+			todayScore: 0,
+			keyData: {
+				calorieCount: 0,
+				proteinCount: 0,
+				carbohydrateCount: 0,
+				lipidCount: 0,
+			},
+		};
 	}
 };
-
 const fetchApiActivityData = async (
 	apiUrl: string,
 	userId: number
@@ -109,8 +117,10 @@ const fetchApiActivityData = async (
 		const activityDataResponse = await response.json();
 		return activityDataResponse.data;
 	} catch (error) {
-		console.log(`This is an API error: ${error}`);
-		throw error;
+		return {
+			userId,
+			sessions: [],
+		};
 	}
 };
 
@@ -123,8 +133,10 @@ const fetchApiAverageSessionsData = async (
 		const averageSessionDataResponse = await response.json();
 		return averageSessionDataResponse.data;
 	} catch (error) {
-		console.log(`This is an API error: ${error}`);
-		throw error;
+		return {
+			userId,
+			sessions: [],
+		};
 	}
 };
 
@@ -137,8 +149,11 @@ const fetchApiPerformanceData = async (
 		const performanceDataResponse = await response.json();
 		return performanceDataResponse.data;
 	} catch (error) {
-		console.log(`This is an API error: ${error}`);
-		throw error;
+		return {
+			userId,
+			kind: { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '' },
+			data: [],
+		};
 	}
 };
 
